@@ -18,7 +18,8 @@ var server = app.listen(function(error) {
         build: process.env.TRAVIS_BUILD_NUMBER,
         username: process.env.SAUCE_USERNAME,
         accessKey: process.env.SAUCE_ACCESS_KEY,
-        browserName: "chrome"
+        browserName: process.env.SELENIUM_BROWSER,
+        version: process.env.SELENIUM_VERSION,
       }).build()
     ;
   } else {
