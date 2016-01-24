@@ -11,6 +11,7 @@ var server = app.listen(function(error) {
   var browser;
 
   if (process.env.SAUCE_USERNAME != undefined) {
+    console.log({ SELENIUM_VERSION: process.env.SELENIUM_VERSION });
     browser = new webdriver.Builder()
       .usingServer('http://'+ process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@ondemand.saucelabs.com:80/wd/hub')
       .withCapabilities({
