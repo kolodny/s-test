@@ -1,0 +1,28 @@
+{
+  "name": "s-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate-test-bundle": "node collect-test-files.js './test/**/*.js' | browserify - -d -o test-bundle.js",
+    "test-browser": "npm run generate-test-bundle && node test-with-selenium.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kolodny/s-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kolodny/s-test/issues"
+  },
+  "homepage": "https://github.com/kolodny/s-test#readme",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "express": "^4.13.4",
+    "mocha": "^2.3.4",
+    "selenium-webdriver": "^2.48.2"
+  }
+}

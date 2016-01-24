@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "5"
+
+addons:
+  sauce_connect:
+    username: kolodny-s-test
+    access_key: 2e6730d5-7666-416d-90d1-c6ed8558f000
+

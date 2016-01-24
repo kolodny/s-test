@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="/node_modules/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="/node_modules/mocha/mocha.js"></script>
+  <script>
+    var buffer = [];
+    var oldConsole = console.log;
+    console.log = function() {
+      var args = Array(arguments.length);
+      for (var i = 0; i < arguments.length; i++) {
+      	args[i] = arguments[i];
+      }
+      buffer.push(args);
+    };
+    mocha.setup({
+      ui: 'bdd',
+      reporter: 'spec',
+    });
+  </script>
+  <script src="/test-bundle.js"></script>
+  <script>
+    mocha.run(function(exitCode) {
+      mochaDone();
+      function mochaDone() {
+        if (window.seleniumCallback) {
+          window.seleniumCallback({
+          	exitCode: exitCode,
+          	logs: buffer,
+          });
+          console.log = oldConsole;
+        } else {
+          setTimeout(mochaDone, 100);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
