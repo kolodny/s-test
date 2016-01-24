@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate-test-bundle": "node collect-test-files.js './test/**/*.js' | browserify - -d -o test-bundle.js",
-    "test-browser": "npm run generate-test-bundle && node test-with-selenium.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run generate-test-bundle && node test-with-selenium.js"
   },
   "repository": {
     "type": "git",
